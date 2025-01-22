@@ -1,10 +1,7 @@
 package com.albertopaim.Todolist.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDate;
@@ -13,10 +10,9 @@ import java.util.UUID;
 
 @Table(name = "compra")
 @Entity
-@Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 public class Compra {
 
     @Id
@@ -33,4 +29,36 @@ public class Compra {
 
     @OneToMany(mappedBy = "compra", cascade = CascadeType.ALL)
     private List<Item> itens;
+
+    public UUID getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public LocalDate getDataCompra() {
+        return dataCompra;
+    }
+
+    public List<Item> getItens() {
+        return itens;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setDataCompra(LocalDate dataCompra) {
+        this.dataCompra = dataCompra;
+    }
+
+    public void setItens(List<Item> itens) {
+        this.itens = itens;
+    }
 }
