@@ -4,12 +4,13 @@ import com.albertopaim.Todolist.Dtos.CompraDTO;
 import com.albertopaim.Todolist.model.Compra;
 import com.albertopaim.Todolist.repositories.CompraRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class CompraService {
@@ -29,5 +30,18 @@ public class CompraService {
         return compras;
     }
 
+    public void deletar(UUID id) throws Exception {
+        Optional<Compra> compraAchada = compraRepository.findCompraById(id);
+        if (compraAchada.isPresent()) {
+            compraRepository.deleteById(id);
+        } else {
+            throw new Exception("Compra não encontrada");
+        }
+    }
 
+    public Compra updateCompra(Compra compra) throws Exception {
+
+        return compraRepository.save(compra);
+
+    }
 }
