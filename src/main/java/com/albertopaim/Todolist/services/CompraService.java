@@ -30,6 +30,19 @@ public class CompraService {
         return compras;
     }
 
+    public Object listarCompra(UUID id) throws Exception {
+
+        Optional<Compra> compraEncontrada = compraRepository.findCompraById(id);
+
+        if (compraEncontrada.isPresent()) {
+
+            return compraEncontrada;
+        } else {
+            throw new Exception("Compra não encontrada");
+        }
+
+    }
+
     public void deletar(UUID id) throws Exception {
         Optional<Compra> compraAchada = compraRepository.findCompraById(id);
         if (compraAchada.isPresent()) {
