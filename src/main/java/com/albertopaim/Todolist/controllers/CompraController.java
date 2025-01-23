@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
+
 
 @RestController
 @RequestMapping("/compra")
@@ -24,11 +26,19 @@ public class CompraController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Compra>> getCompra(){
+    public ResponseEntity<List<CompraDTO>> getCompra(){
 
-        List listaDto = resultado.stream().map(autor -> new AutorDTO(autor.getId(), autor.getName(), autor.getDataNascimento(), autor.getNacionalidade())).collect(Collectors.toList())
         List<Compra> resultado = compraService.listarCompras();
-        return resultado;
+        List<CompraDTO> comprasDTO = resultado.stream().map( compra -> new CompraDTO(compra.getNome(), compra.getDataCompra())).toList();
+
+        return ResponseEntity.status(HttpStatus.OK).body(comprasDTO);
     }
 
+    @DeleteMapping("{id}")
+    public ResponseEntity deleteCompra(@PathVariable String id) throws Exception {
+         var uuid = UUID.fromString(id);
+         compraService.deletar(uuid);
+
+         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
 }
