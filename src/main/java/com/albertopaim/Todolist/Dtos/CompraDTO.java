@@ -1,6 +1,9 @@
 package com.albertopaim.Todolist.Dtos;
 
-import java.time.LocalDate;
+import com.albertopaim.Todolist.model.Item;
 
-public record CompraDTO(String nome, LocalDate dataCompra) {
+import java.time.LocalDate;
+import java.util.List;
+
+public record CompraDTO(String nome, LocalDate dataCompra, List<Item> items) {
 }

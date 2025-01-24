@@ -1,5 +1,6 @@
 package com.albertopaim.Todolist.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
@@ -28,6 +29,7 @@ public class Compra {
     private LocalDate dataCompra;
 
     @OneToMany(mappedBy = "compra", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Item> itens;
 
     public UUID getId() {

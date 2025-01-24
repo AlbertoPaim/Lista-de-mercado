@@ -34,7 +34,7 @@ public class CompraController {
     public ResponseEntity<List<CompraDTO>> getCompras() {
 
         List<Compra> resultado = compraService.listarCompras();
-        List<CompraDTO> comprasDTO = resultado.stream().map(compra -> new CompraDTO(compra.getNome(), compra.getDataCompra())).toList();
+        List<CompraDTO> comprasDTO = resultado.stream().map(compra -> new CompraDTO(compra.getNome(), compra.getDataCompra(), null)).toList();
 
         return ResponseEntity.status(HttpStatus.OK).body(comprasDTO);
     }
@@ -50,7 +50,7 @@ public class CompraController {
 
             Compra compra = compraEncontrada.get();
 
-            CompraDTO compraDTO = new CompraDTO(compra.getNome(), compra.getDataCompra());
+            CompraDTO compraDTO = new CompraDTO(compra.getNome(), compra.getDataCompra(), compra.getItens());
 
             return ResponseEntity.status(HttpStatus.OK).body(compraDTO);
         }
