@@ -1,6 +1,7 @@
 package com.albertopaim.Todolist.services;
 
 import com.albertopaim.Todolist.Dtos.CompraDTO;
+import com.albertopaim.Todolist.Exceptions.UnprocessableEntity;
 import com.albertopaim.Todolist.model.Compra;
 import com.albertopaim.Todolist.repositories.CompraRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,7 @@ public class CompraService {
         if (compraAchada.isPresent()) {
             compraRepository.deleteById(id);
         } else {
-            throw new Exception("Compra não encontrada");
+            throw new UnprocessableEntity("Compra não encontrada");
         }
     }
 

@@ -40,7 +40,7 @@ public class CompraController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<CompraDTO> getCompra(@PathVariable String id) throws Exception {
+    public ResponseEntity<CompraDTO> getCompra(@PathVariable String id) {
         var uuid = UUID.fromString(id);
         Optional<Compra> compraEncontrada = compraRepository.findCompraById(uuid);
 
