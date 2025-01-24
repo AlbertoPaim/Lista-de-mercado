@@ -41,4 +41,17 @@ public class ItemController {
 
         return ResponseEntity.status(HttpStatus.CREATED).body(newItemDTO);
     }
+
+    @DeleteMapping("{id}")
+    public ResponseEntity delete(@PathVariable("id") String id) throws Exception {
+
+    var uuid = UUID.fromString(id);
+
+    itemService.deleteItem(uuid);
+
+    return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+
+    }
+
+
 }

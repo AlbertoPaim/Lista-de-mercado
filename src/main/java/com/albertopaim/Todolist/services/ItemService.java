@@ -8,6 +8,7 @@ import com.albertopaim.Todolist.repositories.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -34,4 +35,19 @@ public class ItemService {
 
        return itemRepository.save(item);
     }
+
+    public void deleteItem (UUID id) throws Exception{
+        Optional<Item> itemEncontrado = itemRepository.findById(id);
+
+        if (itemEncontrado.isEmpty()){
+            throw new UnprocessableEntity("Item não foi encontrado");
+        }
+
+        itemRepository.deleteById(id);
+    }
+
+    public List<Item> getItens(){
+        return itemRepository.findAll();
+    }
+
 }

@@ -34,6 +34,10 @@ public class Item {
     @JsonBackReference
     private Compra compra;
 
+    public Item() {
+
+    }
+
 
     public UUID getId() {
         return id;
