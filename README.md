@@ -17,11 +17,9 @@ Cria uma nova compra.
   "nome": "Nome da Compra",
   "dataCompra": "2025-01-24T10:00:00"
 }
-
+``` 
 Resposta:
 Status: 201 Created
-
-``` 
 
 #### 2. Listar Compras
 `GET /compra`
@@ -44,10 +42,9 @@ Body: Lista de objetos CompraDTO, por exemplo:
 "itens": null
 }
 ]
-
+```
 Resposta:
 Status: 200 OK
-```
 
 #### 3. Obter Compra por ID
 `GET /compra/{id}`
@@ -65,11 +62,10 @@ Body: Objeto CompraDTO, por exemplo:
 "dataCompra": "2025-01-24",
 "itens": ["Item1", "Item2"]
 }
-
+```
 Resposta:
 Status: 200 OK
 Status: 404 Not Found se a compra não for encontrada.
-```
 
 #### 4. Deletar Compra
 `DELETE /compra/{id}`
@@ -79,11 +75,10 @@ Exclui uma compra pelo id.
 Parâmetros:
 id (path): ID único da compra (formato UUID)
 
-``` json
 Resposta:
 Status: 204 No Content se a compra for excluída com sucesso.
 Status: 404 Not Found se a compra não for encontrada.
-```
+
 #### 5. Atualizar Compra
    `PUT /compra/{id}`
 
@@ -97,11 +92,10 @@ Request Body:
 "nome": "Novo Nome",
 "dataCompra": "2025-01-25"
 }
-
+```
 Resposta:
 Status: 204 No Content se a compra for atualizada com sucesso.
 Status: 404 Not Found se a compra não for encontrada.
-```
 
 ### **Item Endpoints**
 
@@ -121,13 +115,12 @@ Request Body:
 "status": true,
 "unidade": "Unidade do Item"
 }
-
+```
 Resposta:
 Status: 201 Created
 Body: Vazio
 
 obs: Se criar um item com o mesmo nome, irá somar as unidades.
-```
 
 #### 2. Deletar Item
 `DELETE /item/{id}`
@@ -137,10 +130,8 @@ Exclui um item pelo id.
 Parâmetros:
 id (path): ID único do item (formato UUID)
 
-``` json
 Resposta:
 Status: 204 No Content se o item for excluído com sucesso.
-```
 
 #### 3. Listar Itens
 `GET /item`
@@ -163,10 +154,9 @@ Body: Lista de objetos ItemDTO, por exemplo:
 "unidade": "2"
 }
 ]
-
+```
 Resposta:
 Status: 200 OK
-``` 
 
 #### 4. Obter Item por ID
 `GET /item/{id}`
@@ -185,10 +175,10 @@ Body: Objeto ItemDTO, por exemplo:
 "status": true,
 "unidade": "2"
 }
-
+```
 Resposta:
 Status: 200 OK
-```
+
 #### 5. Atualizar Item
 `PUT /item/{id}`
 
@@ -204,11 +194,11 @@ Request Body:
 "status": false,
 "unidade": "Nova Unidade"
 }
+````
 
 Resposta:
 Status: 204 No Content se o item for atualizado com sucesso.
 Status: 404 Not Found se o item não for encontrado.
-````
 
 ## Tecnologias Usadas
 
