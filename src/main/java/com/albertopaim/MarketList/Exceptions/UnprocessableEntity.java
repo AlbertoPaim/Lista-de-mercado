@@ -1,4 +1,4 @@
-package com.albertopaim.Todolist.Exceptions;
+package com.albertopaim.MarketList.Exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

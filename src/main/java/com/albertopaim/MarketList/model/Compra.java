@@ -1,4 +1,4 @@
-package com.albertopaim.Todolist.model;
+package com.albertopaim.MarketList.model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;

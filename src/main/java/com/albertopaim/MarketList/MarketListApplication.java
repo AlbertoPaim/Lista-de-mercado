@@ -1,4 +1,4 @@
-package com.albertopaim.Todolist;
+package com.albertopaim.MarketList;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

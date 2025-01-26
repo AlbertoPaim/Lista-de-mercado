@@ -1,6 +1,6 @@
-package com.albertopaim.Todolist.Dtos;
+package com.albertopaim.MarketList.Dtos;
 
-import com.albertopaim.Todolist.model.Item;
+import com.albertopaim.MarketList.model.Item;
 
 import java.time.LocalDate;
 import java.util.List;

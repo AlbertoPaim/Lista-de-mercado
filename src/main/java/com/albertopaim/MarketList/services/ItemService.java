@@ -1,10 +1,10 @@
-package com.albertopaim.Todolist.services;
+package com.albertopaim.MarketList.services;
 
-import com.albertopaim.Todolist.Exceptions.UnprocessableEntity;
-import com.albertopaim.Todolist.model.Compra;
-import com.albertopaim.Todolist.model.Item;
-import com.albertopaim.Todolist.repositories.CompraRepository;
-import com.albertopaim.Todolist.repositories.ItemRepository;
+import com.albertopaim.MarketList.Exceptions.UnprocessableEntity;
+import com.albertopaim.MarketList.model.Compra;
+import com.albertopaim.MarketList.model.Item;
+import com.albertopaim.MarketList.repositories.CompraRepository;
+import com.albertopaim.MarketList.repositories.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +27,17 @@ public class ItemService {
 
         if (compraEncontrada.isEmpty()) {
             throw new UnprocessableEntity("Compra não encontrada");
+        }
+
+        Optional<Item> itemMesmoNome = itemRepository.findByNome(item.getNome());
+
+        if(itemMesmoNome.isPresent()){
+
+            Item itemAtual = itemMesmoNome.get();
+
+            itemAtual.setUnidade(itemAtual.getUnidade() + item.getUnidade() );
+
+            return  itemRepository.save(itemAtual);
         }
 
         Compra compra = compraEncontrada.get();
@@ -62,7 +73,7 @@ public class ItemService {
         return item;
     }
 
-    public Item updateItem(UUID uuid, Item itemBody) {
+    public void updateItem(UUID uuid, Item itemBody) {
         Optional<Item> itemEncontrado = itemRepository.findById(uuid);
 
         if (itemEncontrado.isEmpty()) {
@@ -75,7 +86,7 @@ public class ItemService {
         item.setStatus(itemBody.isStatus());
         item.setCategoria(itemBody.getCategoria());
 
-        return itemRepository.save(item);
+        itemRepository.save(item);
 
     }
 

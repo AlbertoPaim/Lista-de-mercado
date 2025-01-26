@@ -1,10 +1,10 @@
-package com.albertopaim.Todolist.controllers;
+package com.albertopaim.MarketList.controllers;
 
-import com.albertopaim.Todolist.Dtos.ItemDTO;
-import com.albertopaim.Todolist.model.Item;
-import com.albertopaim.Todolist.repositories.CompraRepository;
-import com.albertopaim.Todolist.repositories.ItemRepository;
-import com.albertopaim.Todolist.services.ItemService;
+import com.albertopaim.MarketList.Dtos.ItemDTO;
+import com.albertopaim.MarketList.model.Item;
+import com.albertopaim.MarketList.repositories.CompraRepository;
+import com.albertopaim.MarketList.repositories.ItemRepository;
+import com.albertopaim.MarketList.services.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 
@@ -12,7 +12,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @RequestMapping("/item")
@@ -29,7 +28,7 @@ public class ItemController {
     private ItemRepository itemRepository;
 
     @PostMapping("{id}")
-    public ResponseEntity<ItemDTO> createItem(@PathVariable String id, @RequestBody ItemDTO itemDTO) {
+    public ResponseEntity<HttpStatus> createItem(@PathVariable String id, @RequestBody ItemDTO itemDTO) {
         var uuid = UUID.fromString(id);
 
         Item newItem = new Item();
@@ -42,11 +41,11 @@ public class ItemController {
 
         ItemDTO newItemDTO = new ItemDTO(newItem.getNome(), newItem.getUnidade(), newItem.getCategoria(), newItem.isStatus());
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(newItemDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity delete(@PathVariable("id") String id) throws Exception {
+    public ResponseEntity<HttpStatus> delete(@PathVariable("id") String id) throws Exception {
 
         var uuid = UUID.fromString(id);
 
@@ -79,7 +78,7 @@ public class ItemController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Void> updateItem(@PathVariable String id, @RequestBody ItemDTO itemDTO) {
+    public ResponseEntity<HttpStatus> updateItem(@PathVariable String id, @RequestBody ItemDTO itemDTO) {
         var uuid = UUID.fromString(id);
 
         Item item = new Item();

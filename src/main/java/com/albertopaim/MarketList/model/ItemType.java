@@ -1,4 +1,4 @@
-package com.albertopaim.Todolist.model;
+package com.albertopaim.MarketList.model;
 
 public enum ItemType {
     VEGETAIS,

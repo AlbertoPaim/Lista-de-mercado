@@ -1,9 +1,9 @@
-package com.albertopaim.Todolist.services;
+package com.albertopaim.MarketList.services;
 
-import com.albertopaim.Todolist.Dtos.CompraDTO;
-import com.albertopaim.Todolist.Exceptions.UnprocessableEntity;
-import com.albertopaim.Todolist.model.Compra;
-import com.albertopaim.Todolist.repositories.CompraRepository;
+import com.albertopaim.MarketList.Dtos.CompraDTO;
+import com.albertopaim.MarketList.Exceptions.UnprocessableEntity;
+import com.albertopaim.MarketList.model.Compra;
+import com.albertopaim.MarketList.repositories.CompraRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

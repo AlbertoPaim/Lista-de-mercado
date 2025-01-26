@@ -1,4 +1,4 @@
-package com.albertopaim.Todolist;
+package com.albertopaim.MarketList;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

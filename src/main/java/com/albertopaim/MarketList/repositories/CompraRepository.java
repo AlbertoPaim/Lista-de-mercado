@@ -1,6 +1,6 @@
-package com.albertopaim.Todolist.repositories;
+package com.albertopaim.MarketList.repositories;
 
-import com.albertopaim.Todolist.model.Compra;
+import com.albertopaim.MarketList.model.Compra;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

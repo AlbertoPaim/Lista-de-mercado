@@ -6,10 +6,10 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.4.1</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath/>
 	</parent>
 	<groupId>com.albertopaim</groupId>
-	<artifactId>Todolist</artifactId>
+	<artifactId>MarketList</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Marketlist</name>
 	<description>Lista de mercado para facilitar o dia a dia.</description>

@@ -1,9 +1,9 @@
-package com.albertopaim.Todolist.controllers;
+package com.albertopaim.MarketList.controllers;
 
-import com.albertopaim.Todolist.Dtos.CompraDTO;
-import com.albertopaim.Todolist.model.Compra;
-import com.albertopaim.Todolist.repositories.CompraRepository;
-import com.albertopaim.Todolist.services.CompraService;
+import com.albertopaim.MarketList.Dtos.CompraDTO;
+import com.albertopaim.MarketList.model.Compra;
+import com.albertopaim.MarketList.repositories.CompraRepository;
+import com.albertopaim.MarketList.services.CompraService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +25,7 @@ public class CompraController {
     private CompraRepository compraRepository;
 
     @PostMapping
-    public ResponseEntity<CompraController> createCompra(@RequestBody CompraDTO compraDTO) {
+    public ResponseEntity<HttpStatus> createCompra(@RequestBody CompraDTO compraDTO) {
         compraService.create(compraDTO);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
@@ -58,7 +58,7 @@ public class CompraController {
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity deleteCompra(@PathVariable String id) throws Exception {
+    public ResponseEntity<HttpStatus> deleteCompra(@PathVariable String id) throws Exception {
         var uuid = UUID.fromString(id);
         compraService.deletar(uuid);
 
@@ -66,7 +66,7 @@ public class CompraController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity updateCompra(@PathVariable String id, @RequestBody CompraDTO compraDTO) {
+    public ResponseEntity<HttpStatus> updateCompra(@PathVariable String id, @RequestBody CompraDTO compraDTO) {
         var uuid = UUID.fromString(id);
 
         Optional<Compra> compraEncontrada = compraRepository.findCompraById(uuid);
