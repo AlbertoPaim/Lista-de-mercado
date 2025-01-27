@@ -11,9 +11,9 @@ import java.util.UUID;
 
 @Table(name = "compra")
 @Entity
-@AllArgsConstructor
+@Setter
 @NoArgsConstructor
-@Data
+@Getter
 public class Compra {
 
     @Id
@@ -32,35 +32,4 @@ public class Compra {
     @JsonManagedReference
     private List<Item> itens;
 
-    public UUID getId() {
-        return id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public LocalDate getDataCompra() {
-        return dataCompra;
-    }
-
-    public List<Item> getItens() {
-        return itens;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public void setDataCompra(LocalDate dataCompra) {
-        this.dataCompra = dataCompra;
-    }
-
-    public void setItens(List<Item> itens) {
-        this.itens = itens;
-    }
 }
